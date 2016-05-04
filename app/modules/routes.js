@@ -7,7 +7,7 @@ import Todo from '../components/Todo/Todo.jsx';
 import { Router, Route, hashHistory, IndexRoute, browserHistory } from 'react-router';
  
 export default (
-	<Router history={hashHistory}>
+	<Router history={browserHistory}>
     <Route path="/" component={App}>
     	<Route path="/login" component={Login}/>
     	<Route path="/todo" component={Todo}/>

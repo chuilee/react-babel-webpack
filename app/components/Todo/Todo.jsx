@@ -1,36 +1,57 @@
 import React from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import './todo.scss'
+import Header from './Header.jsx';
+import Footer from './Footer.jsx';
+import Mainer from './Mainer.jsx';
+import TodoStore from '../../stores/TodoStore.jsx';
 
-export default class Todo extends React.Component {
+require('./css/app.css');
+require('./todomvc-common/base.css');
 
-  constructor(props) {
-    super(props);
-    this.state = {items: ['hello', 'world', 'click', 'me']}
-  }
-
-  handleAdd() {
-    var newItems = this.state.items.concat([prompt('Enter some text')])
-    this.setState({items: newItems})
-  }
-
-  render() {
-    var items = this.state.items.map(function (item, i) {
-      return (
-         // onClick={this.handleRemove.bind(this, i)}
-          <div key={item}>{item}</div>
-        )
-      // .bind(this)
-      })
-    return (
-        <div>
-          <button onClick={this.handleAdd.bind(this)}>Add item</button>
-          <ReactCSSTransitionGroup transitionName="example">
-            {items}
-          </ReactCSSTransitionGroup>
-        </div>
-      )
+/**
+ * Retrieve the current TODO data from TodoStore
+ */
+var getTodoState = () => {
+  return {
+    allTodos: TodoStore.getAll(),
+    areAllComplete: TodoStore.areAllComplete()
   }
 }
 
-export default Todo;
+export default class Todo extends React.Component {
+  static propTypes = {
+    name: React.PropTypes.string,
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = getTodoState()
+    this._onChange = this._onChange.bind(this)
+  }
+
+  componentDidMount() {
+    TodoStore.addChangeListener(this._onChange)
+  }
+
+  componentWillUnmount() {
+    TodoStore.removeChangeListener(this._onChange)     
+  }
+
+  render() {
+    return (
+      <div id="todoapp">
+        <Header />
+        <Mainer 
+          allTodos={this.state.allTodos}
+          areAllComplete={this.state.areAllComplete}
+        />
+        <Footer
+          allTodos={this.state.allTodos}
+        />
+      </div>
+    );
+  }
+
+  _onChange() {
+    this.setState(getTodoState())
+  }
+}
