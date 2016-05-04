@@ -26,7 +26,7 @@ export default class App extends React.Component {
 			    <Navbar.Collapse>
 			      <Nav>
 			        <NavItem eventKey={1} href="#"><NavLink to="/repos/reactjs/react-router">前端规范</NavLink></NavItem>
-			        <NavItem eventKey={2} href="#">入门</NavItem>
+			        <NavItem eventKey={2} href="#"><NavLink to="/todo">TODO</NavLink></NavItem>
 			        <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
 			          <MenuItem eventKey={3.1}>Action</MenuItem>
 			          <MenuItem eventKey={3.2}>Another action</MenuItem>

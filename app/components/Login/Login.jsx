@@ -1,6 +1,7 @@
 import React from 'react';
 import {render, findDOMNode} from 'react-dom';
 import {browserHistory} from 'react-router';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {Button, Form, FormGroup, Col, FormControl, Checkbox} from 'react-bootstrap';
 
 require('./Login.scss');
@@ -10,6 +11,7 @@ require('./Login.scss');
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    this.transitionKey = 121212121212;
   }
 
   handleSubmit(e) {
@@ -22,9 +24,18 @@ export default class App extends React.Component {
 
   render() {
     const ControlLabel = 'control-label'
+
     return (
       <div className='container'>
-        <Form horizontal onSubmit={this.handleSubmit}>
+        <ReactCSSTransitionGroup
+          component="div"
+          transitionName="example"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={500}
+        >
+          <h1 key="asldjalsdjalsdj">asldjalsdjalsdj</h1>
+        </ReactCSSTransitionGroup>
+        <Form key="formtransition" horizontal onSubmit={this.handleSubmit}>
           <FormGroup controlId="formHorizontalEmail">
             <Col componentClass={ControlLabel} sm={2}>
               Email
