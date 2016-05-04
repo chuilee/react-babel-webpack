@@ -81,9 +81,10 @@ var TodoStore = Object.assign({}, EventEmitter.prototype, {
 
 })
 
-TodoDispatcher.register(action => {
+TodoDispatcher.register((action) => {
 	let text
-	switch (action.type) {
+
+	switch (action.actionType) {
 		case TodoConstants.TODO_CREATE:
 			text = action.text.trim()
 			if (text!='') {
@@ -102,7 +103,7 @@ TodoDispatcher.register(action => {
 			break;
 
 		case TodoConstants.TODO_UNDO_COMPLETE:
-			updata(action.id, {complete: false})
+			update(action.id, {complete: false})
 			TodoStore.emitChange()
 			break;
 

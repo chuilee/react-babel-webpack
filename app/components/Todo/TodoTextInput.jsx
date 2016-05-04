@@ -36,7 +36,6 @@ export default class TodoTextInput extends React.Component {
   }
 
   _save() {
-    console.log(this.props.onSave)
     this.props.onSave(this.state.value)
     this.setState({
       value: ''

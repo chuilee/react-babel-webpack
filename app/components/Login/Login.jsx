@@ -3,18 +3,13 @@ import {render, findDOMNode} from 'react-dom';
 import {browserHistory} from 'react-router';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {Button, Form, FormGroup, Col, FormControl, Checkbox} from 'react-bootstrap';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 require('./Login.scss');
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-<<<<<<< HEAD
-    this.transitionKey = 121212121212;
-=======
     this.state = { email: 'chui.lee8@gmail.com'}
->>>>>>> origin
   }
 
   handleSubmit(e) {
@@ -27,11 +22,6 @@ export default class App extends React.Component {
 
   render() {
     const ControlLabel = 'control-label'
-<<<<<<< HEAD
-
-=======
-    const key = "sdfsdfsdfsdfsdfsd"
->>>>>>> origin
     return (
       <div className='container'>
         <ReactCSSTransitionGroup
@@ -39,20 +29,6 @@ export default class App extends React.Component {
           transitionName="example"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={500}
-<<<<<<< HEAD
-        >
-          <h1 key="asldjalsdjalsdj">asldjalsdjalsdj</h1>
-        </ReactCSSTransitionGroup>
-        <Form key="formtransition" horizontal onSubmit={this.handleSubmit}>
-          <FormGroup controlId="formHorizontalEmail">
-            <Col componentClass={ControlLabel} sm={2}>
-              Email
-            </Col>
-            <Col sm={10}>
-              <FormControl ref="email" type="email" placeholder="Email" />
-            </Col>
-          </FormGroup>
-=======
           transitionAppearTimeout={1500}
           transitionAppear={true}>
           <Form key="1" horizontal onSubmit={this.handleSubmit}>
@@ -64,7 +40,6 @@ export default class App extends React.Component {
                 <FormControl ref="email" type="email" placeholder={this.state.email} />
               </Col>
             </FormGroup>
->>>>>>> origin
 
             <FormGroup controlId="formHorizontalPassword">
               <Col componentClass={ControlLabel} sm={2}>
