@@ -1,8 +1,8 @@
 import React from 'react';
 import {render, findDOMNode} from 'react-dom';
 import {browserHistory} from 'react-router';
-import {Button, Form, FormGroup, Col, FormControl, Checkbox} from 'react-bootstrap';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {Button, Form, FormGroup, Col, FormControl, Checkbox} from 'react-bootstrap';
 
 require('./Login.scss');
 
@@ -22,7 +22,6 @@ export default class App extends React.Component {
 
   render() {
     const ControlLabel = 'control-label'
-    const key = "sdfsdfsdfsdfsdfsd"
     return (
       <div className='container'>
         <ReactCSSTransitionGroup

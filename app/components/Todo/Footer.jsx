@@ -38,7 +38,7 @@ export default class Footer extends React.Component {
     if (completed) {
       clearCompletedButton =
         <button
-          id="clear-completed">
+          id="clear-completed"
           onClick={this._onClearCompletedClick}>
           Clear completed {completed}
         </button>
