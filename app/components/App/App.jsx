@@ -1,8 +1,8 @@
 import React from 'react';
-import {Button, Pagination, Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
 import {Link} from 'react-router';
-import NavLink from '../NavLink/NavLink.jsx';
+import {Grid, Row, Col, ListGroup, ListGroupItem, Well, Clearfix, Glyphicon} from 'react-bootstrap';
 import {LinkContainer, IndexLinkContainer} from 'react-router-bootstrap';
+import Navbar from '../Navbar/Navbar.jsx';
 
 require('./App.scss');
 
@@ -21,37 +21,37 @@ export default class App extends React.Component {
 
     return (
     	<div>
-			  <Navbar inverse>
-			  	<Navbar.Header>
-			      <Navbar.Brand>
-			        <Link to='/home'>蓝莓会开发文档</Link>
-			      </Navbar.Brand>
-			      <Navbar.Toggle />
-			    </Navbar.Header>
-			    <Navbar.Collapse>
-			      <Nav>
-			      	<LinkContainer to={{ pathname: "/repos/reactjs/react-router" }}>
-			        	<NavItem eventKey={1} href="#">前端规范</NavItem>
-			        </LinkContainer>
-			        <LinkContainer to={{ pathname: "/todo" }}>
-		        		<NavItem eventKey={2} href="#">Todo Example</NavItem>
-		        	</LinkContainer>
-			        <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-			          <MenuItem eventKey={{keycode:3.1}}  onSelect={ this.handleSelect }>Action</MenuItem>
-			          <MenuItem eventKey={3.2}>Another action</MenuItem>
-			          <MenuItem eventKey={3.3}>Something else here</MenuItem>
-			          <MenuItem divider />
-			          <MenuItem eventKey={3.3}>Separated link</MenuItem>
-			        </NavDropdown>
-			      </Nav>
-			      <Nav pullRight>
-			      	<LinkContainer to={{ pathname: '/login' }}>
-			        	<NavItem eventKey={2}>登录</NavItem>
-			        </LinkContainer>
-			      </Nav>
-			    </Navbar.Collapse>
-			  </Navbar>
-
+			  <Navbar />
+        <Grid>
+          <Row>
+            <Col xs={12} md={3}>
+              <Clearfix>
+                <ListGroup>
+                  <LinkContainer to={{pathname: '/name-rule'}}>
+                    <ListGroupItem>命名规则</ListGroupItem>
+                  </LinkContainer>
+                  <LinkContainer to={{pathname: '/html'}}>
+                    <ListGroupItem>HTML</ListGroupItem>
+                  </LinkContainer>
+                  <LinkContainer to={{pathname: '/stylesheet'}}>
+                    <ListGroupItem>CSS</ListGroupItem>
+                  </LinkContainer>
+                  <LinkContainer to={{pathname: '/javascript'}}>
+                    <ListGroupItem>JAVASCRIPT</ListGroupItem>
+                  </LinkContainer>
+                </ListGroup>
+              </Clearfix>
+            </Col>
+            <Col xs={12} md={9}>
+              <Well className="tips">
+                坚持制定好的代码规范。<br />无论团队人数多少，代码应该同出一门。
+              </Well>
+              <h2>命名规则</h2>
+              <h3>项目命名</h3>
+              <div className="content">全部采用小写方式， 以下划线分隔。<br/>例：my_project_name</div>
+            </Col>
+          </Row>
+        </Grid>
 			  {this.props.children}
 
 		  </div>
